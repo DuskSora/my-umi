@@ -14,4 +14,4 @@ app.use(createLoading());
   app.use(plugin);
 });
 
-
+app.model({ namespace: 'puzzleCards', ...(require('D:/Development/Workspaces/Projects/my-umi/src/models/puzzleCards.js').default) });

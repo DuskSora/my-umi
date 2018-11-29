@@ -1,5 +1,4 @@
 export default {
-    singular: false,
     routes: [{
         path: "/",
         component: "../Layout",

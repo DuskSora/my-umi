@@ -5,12 +5,21 @@ import { connect } from 'dva';
 
 const namespace = "puzzlecards";
 
-const mapStateToProps = state => {
-    const cardList = state[cardList].cardList;
-    return cardList;
-};
+const mapStateToProps = state => ({
+   cardList : state[namespace].cardList
+});
 
-@connect(mapStateToProps)
+const mapDispatchToProps = dispatch => ({
+    handleClick: newCard => {
+        const action = {
+            type: namespace + "/addNewCard",
+            payload: newCard
+        };
+        dispatch(action);
+    }
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class PuzzleCards extends Component {
     // addNewCard = () => {
     //     this.setState(prevState => {
@@ -38,9 +47,14 @@ export default class PuzzleCards extends Component {
                         </div>
                     </Card>
                 ))}
-                {/* <div>
-                    <Button onClick={this.addNewCard}>添加卡片</Button>
-                </div> */}
+                <div>
+                    <Button onClick={() => {
+                        this.props.handleClick({
+                            setup: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                            punchline: 'here we use dva'
+                        });
+                    }}>添加卡片</Button>
+                </div>
             </div>
         );
     }

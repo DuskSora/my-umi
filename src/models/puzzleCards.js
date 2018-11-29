@@ -12,7 +12,21 @@ export default {
                 setup: 'What happens to a frog\'s car when it breaks down?',
                 punchline: 'It gets toad away',
             }
-        ]
+        ],
+        counter: 100
     },
-
+    reducers: {
+        addNewCard(state, { payload: newCard }) {
+            const counter = state.counter + 1;
+            const newCardWithId = {
+                ...newCard,
+                id: counter
+            };
+            const cardList = state.cardList.concat(newCardWithId);
+            return {
+                cardList,
+                counter
+            }
+        }
+    }
 };
