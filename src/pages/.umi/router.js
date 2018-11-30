@@ -12,7 +12,7 @@ let routes = [
     "component": require('../../Layout').default,
     "routes": [
       {
-        "path": "/helloworld",
+        "path": "/",
         "component": require('../HelloWorld').default,
         "exact": true
       },
@@ -42,6 +42,11 @@ let routes = [
       {
         "path": "/puzzlecards",
         "component": require('../PuzzleCards').default,
+        "exact": true
+      },
+      {
+        "path": "/list",
+        "component": require('../List').default,
         "exact": true
       },
       {

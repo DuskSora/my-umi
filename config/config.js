@@ -3,7 +3,7 @@ export default {
         path: "/",
         component: "../Layout",
         routes: [{
-            path: "/helloworld",
+            path: "/",
             component: "./HelloWorld"
         }, {
             path: "/dashboard",
@@ -15,6 +15,9 @@ export default {
         }, {
             path: "/puzzlecards",
             component: "./PuzzleCards"
+        }, {
+            path: "list",
+            component: "./List"
         }]
     }],
     plugins: [
@@ -22,5 +25,12 @@ export default {
             antd: true,
             dva: true
         }]
-    ]
+    ],
+    proxy: {
+        "/test": {
+            target: "http://114.116.89.193:8999",
+            changeOrigin: true
+        }
+    },
+    publicPath: "./"
 };

@@ -10,6 +10,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    onDidMount: () => {
+        dispatch({
+            type: `${namespace}/queryInitCards`
+        });
+    },
     handleClick: newCard => {
         const action = {
             type: namespace + "/addNewCard",
@@ -35,6 +40,10 @@ export default class PuzzleCards extends Component {
     //         }
     //     });
     // }
+
+    componentDidMount() {
+        this.props.onDidMount();
+    }
 
     render() {
         return (
